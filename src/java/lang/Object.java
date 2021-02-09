@@ -36,7 +36,7 @@ import jdk.internal.HotSpotIntrinsicCandidate;
  * @see java.lang.Class
  * @since 1.0
  */
-// Java类的共同祖先
+// Java类的共同祖 先
 public class Object {
     
     static {
