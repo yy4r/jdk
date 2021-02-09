@@ -217,6 +217,8 @@ public final class String implements Serializable, Comparable<String>, CharSeque
      */
     @Stable
     private final byte[] value;
+
+    //jdk1.8以前使用char数组存储值
     
     /**
      * The identifier of the encoding used to encode the bytes in {@code value}. The supported values in this implementation are LATIN1 and UTF16。
@@ -3119,6 +3121,7 @@ public final class String implements Serializable, Comparable<String>, CharSeque
     // 拷贝String中的字节到dst数组
     void getBytes(byte dst[], int dstBegin, byte coder) {
         if(coder() == coder) {
+            //引用拷贝 这里直接拷贝过去
             System.arraycopy(value, 0, dst, dstBegin << coder, value.length);
         } else {
             /* 如果两个coder不同，则将源字符串当做LATIN-String对待 */

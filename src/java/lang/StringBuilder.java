@@ -85,16 +85,17 @@ import java.io.Serializable;
  * @see java.lang.String
  * @since 1.5
  */
+//类似于比buffer少了一个sync
 // 非线程安全的字符序列，适合单线程下操作大量字符，内部实现为字节数组
 public final class StringBuilder extends AbstractStringBuilder implements Serializable, Comparable<StringBuilder>, CharSequence {
-    
+
     /** use serialVersionUID for interoperability */
     static final long serialVersionUID = 4383685877147921099L;
-    
-    
-    
+
+
+
     /*▼ 构造方法 ████████████████████████████████████████████████████████████████████████████████┓ */
-    
+
     /**
      * Constructs a string builder with no characters in it and an
      * initial capacity of 16 characters.
@@ -103,7 +104,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
     public StringBuilder() {
         super(16);
     }
-    
+
     /**
      * Constructs a string builder with no characters in it and an
      * initial capacity specified by the {@code capacity} argument.
@@ -116,7 +117,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
     public StringBuilder(int capacity) {
         super(capacity);
     }
-    
+
     /**
      * Constructs a string builder initialized to the contents of the
      * specified string. The initial capacity of the string builder is
@@ -129,7 +130,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super(str.length() + 16);
         append(str);
     }
-    
+
     /**
      * Constructs a string builder that contains the same characters
      * as the specified {@code CharSequence}. The initial capacity of
@@ -142,20 +143,20 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         this(seq.length() + 16);
         append(seq);
     }
-    
+
     /*▲ 构造方法 ████████████████████████████████████████████████████████████████████████████████┛ */
-    
-    
-    
+
+
+
     /*▼ 添加 ████████████████████████████████████████████████████████████████████████████████┓ */
-    
+
     // 向StringBuilder末尾添加一个字符序列
     @Override
     public StringBuilder append(CharSequence s) {
         super.append(s);
         return this;
     }
-    
+
     /**
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
@@ -165,7 +166,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.append(s, start, end);
         return this;
     }
-    
+
     // 向StringBuilder末尾添加一个字符串str
     @Override
     @HotSpotIntrinsicCandidate
@@ -173,7 +174,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.append(str);
         return this;
     }
-    
+
     // 向StringBuilder末尾添加一个StringBuffer
     /**
      * Appends the specified {@code StringBuffer} to this sequence.
@@ -199,14 +200,14 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.append(sb);
         return this;
     }
-    
+
     // 向StringBuilder末尾添加一个字符序列
     @Override
     public StringBuilder append(char[] str) {
         super.append(str);
         return this;
     }
-    
+
     // 向StringBuilder末尾添加一个子序列，该子序列取自字符数组s的[offset, offset+len)范围
     /**
      * @throws IndexOutOfBoundsException {@inheritDoc}
@@ -216,20 +217,20 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.append(str, offset, len);
         return this;
     }
-    
+
     // 向StringBuilder末尾添加一个Object值的字符串序列
     @Override
     public StringBuilder append(Object obj) {
         return append(String.valueOf(obj));
     }
-    
+
     // 向StringBuilder末尾添加一个boolean值的字符串序列
     @Override
     public StringBuilder append(boolean b) {
         super.append(b);
         return this;
     }
-    
+
     // 向StringBuilder末尾添加一个char值的字符串序列
     @Override
     @HotSpotIntrinsicCandidate
@@ -237,7 +238,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.append(c);
         return this;
     }
-    
+
     // 向StringBuilder末尾添加一个int值的字符串序列
     @Override
     @HotSpotIntrinsicCandidate
@@ -245,28 +246,28 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.append(i);
         return this;
     }
-    
+
     // 向StringBuilder末尾添加一个long值的字符串序列
     @Override
     public StringBuilder append(long l) {
         super.append(l);
         return this;
     }
-    
+
     // 向StringBuilder末尾添加一个float值的字符串序列
     @Override
     public StringBuilder append(float f) {
         super.append(f);
         return this;
     }
-    
+
     // 向StringBuilder末尾添加一个double值的字符串序列
     @Override
     public StringBuilder append(double d) {
         super.append(d);
         return this;
     }
-    
+
     // 向StringBuilder末尾添加一个由Unicode码点值表示的char的字符串序列
     /**
      * @since 1.5
@@ -276,13 +277,13 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.appendCodePoint(codePoint);
         return this;
     }
-    
+
     /*▲ 添加 ████████████████████████████████████████████████████████████████████████████████┛ */
-    
-    
-    
+
+
+
     /*▼ 删除 ████████████████████████████████████████████████████████████████████████████████┓ */
-    
+
     /**
      * @throws StringIndexOutOfBoundsException {@inheritDoc}
      */
@@ -292,7 +293,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.delete(start, end);
         return this;
     }
-    
+
     /**
      * @throws StringIndexOutOfBoundsException {@inheritDoc}
      */
@@ -302,13 +303,13 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.deleteCharAt(index);
         return this;
     }
-    
+
     /*▲ 删除 ████████████████████████████████████████████████████████████████████████████████┛ */
-    
-    
-    
+
+
+
     /*▼ 插入 ████████████████████████████████████████████████████████████████████████████████┓ */
-    
+
     // 向StringBuilder的dstOffset索引处插入一个子序列s
     /**
      * @throws IndexOutOfBoundsException {@inheritDoc}
@@ -318,7 +319,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.insert(dstOffset, s);
         return this;
     }
-    
+
     // 向StringBuilder的dstOffset索引处插入一个子序列，该子序列取自字符序列s的[start, end)范围
     /**
      * @throws IndexOutOfBoundsException {@inheritDoc}
@@ -328,7 +329,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.insert(dstOffset, s, start, end);
         return this;
     }
-    
+
     // 向StringBuilder的offset索引处插入一个子符序列str
     /**
      * @throws StringIndexOutOfBoundsException {@inheritDoc}
@@ -338,7 +339,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.insert(offset, str);
         return this;
     }
-    
+
     // 向StringBuilder的index索引处插入一个子序列，该子序列取自字符序列str的[offset, offset+len)范围
     /**
      * @throws StringIndexOutOfBoundsException {@inheritDoc}
@@ -348,7 +349,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.insert(index, str, offset, len);
         return this;
     }
-    
+
     // 向StringBuilder的offset索引处插入一个字符串str
     /**
      * @throws StringIndexOutOfBoundsException {@inheritDoc}
@@ -358,7 +359,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.insert(offset, str);
         return this;
     }
-    
+
     // 向StringBuilder的offset索引处插入一个Object值的字符串序列
     /**
      * @throws StringIndexOutOfBoundsException {@inheritDoc}
@@ -368,7 +369,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.insert(offset, obj);
         return this;
     }
-    
+
     // 向StringBuilder的offset索引处插入一个boolean值的字符串序列
     /**
      * @throws StringIndexOutOfBoundsException {@inheritDoc}
@@ -378,7 +379,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.insert(offset, b);
         return this;
     }
-    
+
     // 向StringBuilder的offset索引处插入一个char值的字符串序列
     /**
      * @throws IndexOutOfBoundsException {@inheritDoc}
@@ -388,7 +389,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.insert(offset, c);
         return this;
     }
-    
+
     // 向StringBuilder的offset索引处插入一个int值的字符串序列
     /**
      * @throws StringIndexOutOfBoundsException {@inheritDoc}
@@ -398,7 +399,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.insert(offset, i);
         return this;
     }
-    
+
     // 向StringBuilder的offset索引处插入一个long值的字符串序列
     /**
      * @throws StringIndexOutOfBoundsException {@inheritDoc}
@@ -408,7 +409,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.insert(offset, l);
         return this;
     }
-    
+
     // 向StringBuilder的offset索引处插入一个float值的字符串序列
     /**
      * @throws StringIndexOutOfBoundsException {@inheritDoc}
@@ -418,7 +419,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.insert(offset, f);
         return this;
     }
-    
+
     // 向StringBuilder的offset索引处插入一个double值的字符串序列
     /**
      * @throws StringIndexOutOfBoundsException {@inheritDoc}
@@ -428,13 +429,13 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.insert(offset, d);
         return this;
     }
-    
+
     /*▲ 插入 ████████████████████████████████████████████████████████████████████████████████┛ */
-    
-    
-    
+
+
+
     /*▼ 替换 ████████████████████████████████████████████████████████████████████████████████┓ */
-    
+
     /**
      * @throws StringIndexOutOfBoundsException {@inheritDoc}
      */
@@ -444,62 +445,62 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         super.replace(start, end, str);
         return this;
     }
-    
+
     /*▲ 替换 ████████████████████████████████████████████████████████████████████████████████┛ */
-    
-    
-    
+
+
+
     /*▼ 求子串 ████████████████████████████████████████████████████████████████████████████████┓ */
-    
+
     /*▲ 求子串 ████████████████████████████████████████████████████████████████████████████████┛ */
-    
-    
-    
+
+
+
     /*▼ 查找子串位置 ████████████████████████████████████████████████████████████████████████████████┓ */
-    
+
     // 返回子串str在当前主串StringBuilder中第一次出现的位置
     @Override
     public int indexOf(String str) {
         return super.indexOf(str);
     }
-    
+
     // 返回子串str在当前主串StringBuilder中第一次出现的位置（从主串fromIndex处向后搜索）
     @Override
     public int indexOf(String str, int fromIndex) {
         return super.indexOf(str, fromIndex);
     }
-    
+
     // 返回子串str在当前主串StringBuilder中最后一次出现的位置
     @Override
     public int lastIndexOf(String str) {
         return super.lastIndexOf(str);
     }
-    
+
     // 返回子串str在当前主串StringBuilder中最后一次出现的位置（从主串fromIndex处向前搜索）
     @Override
     public int lastIndexOf(String str, int fromIndex) {
         return super.lastIndexOf(str, fromIndex);
     }
-    
+
     /*▲ 查找子串位置 ████████████████████████████████████████████████████████████████████████████████┛ */
-    
-    
-    
+
+
+
     /*▼ 逆置 ████████████████████████████████████████████████████████████████████████████████┓ */
-    
+
     // 逆置StringBuilder
     @Override
     public StringBuilder reverse() {
         super.reverse();
         return this;
     }
-    
+
     /*▲ 逆置 ████████████████████████████████████████████████████████████████████████████████┛ */
-    
-    
-    
+
+
+
     /*▼ 比较 ████████████████████████████████████████████████████████████████████████████████┓ */
-    
+
     /**
      * Compares two {@code StringBuilder} instances lexicographically. This method
      * follows the same rules for lexicographical comparison as defined in the
@@ -525,13 +526,13 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
     public int compareTo(StringBuilder another) {
         return super.compareTo(another);
     }
-    
+
     /*▲ 比较 ████████████████████████████████████████████████████████████████████████████████┛ */
-    
-    
-    
+
+
+
     /*▼ 序列化 ████████████████████████████████████████████████████████████████████████████████┓ */
-    
+
     /**
      * Save the state of the {@code StringBuilder} instance to a stream
      * (that is, serialize it).
@@ -554,7 +555,7 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         }
         s.writeObject(val);
     }
-    
+
     /**
      * readObject is called to restore the state of the StringBuffer from a stream.
      */
@@ -564,16 +565,16 @@ public final class StringBuilder extends AbstractStringBuilder implements Serial
         char[] val = (char[]) s.readObject();
         initBytes(val, 0, val.length);
     }
-    
+
     /*▲ 序列化 ████████████████████████████████████████████████████████████████████████████████┛ */
-    
-    
-    
+
+
+
     @Override
     @HotSpotIntrinsicCandidate
     public String toString() {
         // Create a copy, don't share the array
         return isLatin1() ? StringLatin1.newString(value, 0, count) : StringUTF16.newString(value, 0, count);
     }
-    
+
 }

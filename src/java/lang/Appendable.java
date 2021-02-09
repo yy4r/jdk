@@ -48,6 +48,7 @@ import java.io.IOException;
  *
  * @since 1.5
  */
+// TODO: 2021/2/9 接口只是定义规范而已 并没有功能 只是功能的定义
 // 添加字符的接口。代表该对象具有添加字符序列的能力
 public interface Appendable {
     

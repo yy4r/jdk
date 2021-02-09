@@ -368,6 +368,7 @@ public final class System {
      * @throws NullPointerException      if either {@code src} or
      *                                   {@code dest} is {@code null}.
      */
+    // TODO: 2021/2/9 这里数组复制
     // 数组复制，从src的srcPos索引处复制length个元素放入dest的destPos索引处
     @HotSpotIntrinsicCandidate
     public static native void arraycopy(Object src, int srcPos, Object dest, int destPos, int length);

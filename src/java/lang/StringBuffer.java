@@ -125,6 +125,7 @@ public final class StringBuffer extends AbstractStringBuilder implements Seriali
     /**
      * Constructs a string buffer with no characters in it and an initial capacity of 16 characters.
      */
+    //刷个默认初始化16容量
     @HotSpotIntrinsicCandidate
     public StringBuffer() {
         super(16);

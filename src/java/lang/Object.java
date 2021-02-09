@@ -36,7 +36,7 @@ import jdk.internal.HotSpotIntrinsicCandidate;
  * @see java.lang.Class
  * @since 1.0
  */
-// Java类的共同祖 先  sada
+// Java类的共同祖先
 public class Object {
     
     static {
@@ -590,6 +590,7 @@ public class Object {
      * @see java.lang.Object#wait()
      */
     // 随机唤醒某个具有相同锁的对象从wait状态进入争锁状态
+    // 这里注意是对象的锁   对象调用 释放对象的等待队列中的锁
     @HotSpotIntrinsicCandidate
     public final native void notify();
     

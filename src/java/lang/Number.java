@@ -55,6 +55,7 @@ import java.io.Serializable;
  * @since 1.0
  */
 // 数值类型包装类的共同祖先，声明了各种包装类型的拆箱方法
+// TODO: 2021/2/9 抽象类而非接口 为何
 public abstract class Number implements Serializable {
     /** use serialVersionUID from JDK 1.0.2 for interoperability */
     private static final long serialVersionUID = -8742448824652078965L;
