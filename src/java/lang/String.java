@@ -3121,7 +3121,8 @@ public final class String implements Serializable, Comparable<String>, CharSeque
     // 拷贝String中的字节到dst数组
     void getBytes(byte dst[], int dstBegin, byte coder) {
         if(coder() == coder) {
-            //引用拷贝 这里直接拷贝过去
+            //引用拷贝 这里直接拷
+            // 贝过去
             System.arraycopy(value, 0, dst, dstBegin << coder, value.length);
         } else {
             /* 如果两个coder不同，则将源字符串当做LATIN-String对待 */
