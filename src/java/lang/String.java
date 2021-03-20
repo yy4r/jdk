@@ -333,7 +333,7 @@ public final class String implements Serializable, Comparable<String>, CharSeque
      *
      * @param value The initial value of the string
      */
-    // ▶ 3-1 将指定的char序列打包成String。
+    // ▶ 3-1 将指定的char序列打包成String。aaaaa
     public String(char value[]) {
         this(value, 0, value.length, null);
     }
